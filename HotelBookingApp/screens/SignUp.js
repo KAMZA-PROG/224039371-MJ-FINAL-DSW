@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth, db } from '../firebase'; // auth + Firestore
+import { auth, db } from '../firebase'; 
 import { doc, setDoc } from 'firebase/firestore';
 
 const SignUp = ({ navigation }) => {
@@ -11,7 +11,6 @@ const SignUp = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleSignUp = async () => {
-    // Basic validation
     if (!name || !email || !password) {
       Alert.alert('Error', 'All fields are required');
       return;
@@ -29,14 +28,14 @@ const SignUp = ({ navigation }) => {
     }
 
     try {
-      // 1️⃣ Create user in Firebase Auth
+      
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const currentUser = userCredential.user;
 
-      // 2️⃣ Update displayName in Auth
+      
       await updateProfile(currentUser, { displayName: name });
 
-      // 3️⃣ Create user document in Firestore
+     
       await setDoc(doc(db, 'users', currentUser.uid), {
         uid: currentUser.uid,
         name: name,
@@ -44,7 +43,7 @@ const SignUp = ({ navigation }) => {
       });
 
       Alert.alert('Success', 'Account created!');
-      navigation.replace('Explore'); // Go to Explore after signup
+      navigation.replace('Explore'); 
     } catch (error) {
       Alert.alert('Sign Up Failed', error.message);
     }

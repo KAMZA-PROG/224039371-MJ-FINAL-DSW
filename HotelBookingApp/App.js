@@ -11,8 +11,7 @@ import Onboarding3 from './screens/Onboarding3';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import ForgotPassword from './screens/ForgotPassword';
-import Explore from './screens/Explore'; // your home screen
-
+import Explore from './screens/Explore'; 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,7 +31,7 @@ export default function App() {
     };
     checkOnboarding();
 
-    // Listen to Firebase auth changes
+    
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
@@ -41,17 +40,17 @@ export default function App() {
   }, []);
 
   if (isFirstLaunch === null || loading) {
-    return null; // optional: show a loading spinner
+    return null; 
   }
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          // User is signed in -> show main app
+          
           <Stack.Screen name="Explore" component={Explore} />
         ) : isFirstLaunch ? (
-          // First launch and not signed in -> show onboarding
+          
           <>
             <Stack.Screen name="Onboarding1" component={Onboarding1} />
             <Stack.Screen name="Onboarding2" component={Onboarding2} />
@@ -61,7 +60,7 @@ export default function App() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           </>
         ) : (
-          // Not first launch -> show auth screens
+          
           <>
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />

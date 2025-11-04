@@ -1,4 +1,3 @@
-// screens/Explore.js
 import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 
@@ -9,7 +8,7 @@ const sampleHotels = [
     location: 'Cape Town',
     price: 120,
     rating: 4.5,
-    image: require('../assets/ExplorePage/image-1.png'),
+    image: require('../assets/06-ExplorePage/image-1.png'),
   },
   {
     id: '2',
@@ -17,7 +16,7 @@ const sampleHotels = [
     location: 'Durban',
     price: 150,
     rating: 4.7,
-    image: require('../assets/ExplorePage/image-4.png'),
+    image: require('../assets/06-ExplorePage/image-4.png'),
   },
   {
     id: '3',
@@ -25,7 +24,7 @@ const sampleHotels = [
     location: 'Johannesburg',
     price: 100,
     rating: 4.2,
-    image: require('../assets/ExplorePage/image-13.png'),
+    image: require('../assets/06-ExplorePage/image-13.png'),
   },
 ];
 

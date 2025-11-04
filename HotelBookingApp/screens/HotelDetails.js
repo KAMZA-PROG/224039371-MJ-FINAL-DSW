@@ -66,7 +66,7 @@ const HotelDetails = ({ route, navigation }) => {
 
   const renderReview = ({ item }) => (
     <View style={styles.reviewCard}>
-      <Text style={styles.reviewName}>{item.name} ⭐ {item.rating}</Text>
+      <Text style={styles.reviewName}>{item.name}  {item.rating}</Text>
       <Text>{item.comment}</Text>
     </View>
   );
@@ -77,7 +77,7 @@ const HotelDetails = ({ route, navigation }) => {
       <Text style={styles.name}>{hotel.name}</Text>
       <Text style={styles.location}>{hotel.location}</Text>
       <Text style={styles.price}>${hotel.price} / night</Text>
-      <Text style={styles.rating}>⭐ {hotel.rating}</Text>
+      <Text style={styles.rating}>{hotel.rating}</Text>
 
       <TouchableOpacity
         style={styles.bookButton}

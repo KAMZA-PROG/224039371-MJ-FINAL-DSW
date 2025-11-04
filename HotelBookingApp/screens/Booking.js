@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput, Alert, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { auth, db } from '../firebase'; // import Firebase auth & Firestore
+import { auth, db } from '../firebase'; 
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 const Booking = ({ route, navigation }) => {
