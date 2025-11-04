@@ -11,7 +11,12 @@ import Onboarding3 from './screens/Onboarding3';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import ForgotPassword from './screens/ForgotPassword';
-import Explore from './screens/Explore'; 
+import Explore from './screens/Explore';
+import HotelDetails from './screens/HotelDetails';
+import Booking from './screens/Booking';
+import Profile from './screens/Profile';
+
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -31,26 +36,27 @@ export default function App() {
     };
     checkOnboarding();
 
-    
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
 
-  if (isFirstLaunch === null || loading) {
-    return null; 
-  }
+  if (isFirstLaunch === null || loading) return null;
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          
-          <Stack.Screen name="Explore" component={Explore} />
+          <>
+            <Stack.Screen name="Explore" component={Explore} />
+            <Stack.Screen name="HotelDetails" component={HotelDetails} />
+            <Stack.Screen name="Booking" component={Booking} />
+            <Stack.Screen name="Profile" component={Profile} />
+          </>
         ) : isFirstLaunch ? (
-          
           <>
             <Stack.Screen name="Onboarding1" component={Onboarding1} />
             <Stack.Screen name="Onboarding2" component={Onboarding2} />
@@ -60,7 +66,6 @@ export default function App() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           </>
         ) : (
-          
           <>
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
